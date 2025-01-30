@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timer App</title>
+  <link rel="stylesheet" href="trial.css">
+</head>
+<body>
+  <!-- Background -->
+  <div class="background" id="background"></div>
+
+  <!-- Three-dot Menu -->
+  <div class="menu-container">
+    <div class="menu-icon" onclick="toggleMenu()">&#x22EE;</div>
+    <div class="menu-options hidden" id="menu-options">
+      <label><input type="checkbox" onchange="toggleFeature('stopwatch')"> Stopwatch</label>
+      <label><input type="checkbox" onchange="toggleFeature('break-timer')"> Break Timer</label>
+      <label><input type="checkbox" onchange="toggleFeature('background-options')"> Background Options</label>
+      <label><input type="checkbox" onchange="toggleFeature('music-options')"> Background Music</label>
+      <label><input type="checkbox" onchange="toggleFeature('color-picker')"> Change Timer Color</label>
+      <label><input type="checkbox" onchange="toggleFeature('weather')"> Weather</label>
+    </div>
+  </div>
+
+  <!-- Main Timer -->
+  <div class="main-timer" id="main-timer">00:00:00</div>
+
+  <!-- Features -->
+  <div class="features-container" id="features-container">
+    <!-- Section 1: Stopwatch and Break Timer -->
+    <div class="feature-section" id="section-1">
+      <div class="feature hidden" id="stopwatch">
+        <h2>Stopwatch</h2>
+        <div id="stopwatch-display">00:00:00</div>
+        <button onclick="startStopwatch()">Start</button>
+        <button onclick="stopStopwatch()">Stop</button>
+        <button onclick="resetStopwatch()">Reset</button>
+      </div>
+
+      <div class="feature hidden" id="break-timer">
+        <h2>Break Timer</h2>
+        <div id="break-timer-display">05:00</div>
+        <button onclick="startBreakTimer()">Start</button>
+        <button onclick="stopBreakTimer()">Stop</button>
+        <button onclick="resetBreakTimer()">Reset</button>
+      </div>
+    </div>
+
+    <!-- Section 2: Background Image and Music -->
+    <div class="feature-section" id="section-2">
+     <div class="feature hidden" id="background-options">
+        <h2>Upload Background</h2>
+            <label for="upload-background">Choose an image or video:</label>
+            <input type="file" accept="image/*,video/*" id="upload-background" onchange="uploadBackground()">
+            <button class="button" onclick="stretchBackground(true)">Stretch</button>
+            <button class="button" onclick="stretchBackground(false)">Original</button>
+     </div>
+    
+
+      <div class="feature hidden" id="music-options">
+        <h2>Background Music</h2>
+        <label for="upload-music">Choose an audio file:</label>
+        <input type="file" accept="audio/*" id="upload-music" onchange="uploadMusic()">
+        <button class="button" onclick="playMusic()">Play</button>
+        <button class="button" onclick="pauseMusic()">Pause</button>
+      </div>
+    </div>
+
+    <!-- Section 3: Weather and Timer Color Change -->
+    <div class="feature-section" id="section-3">
+      <div class="feature hidden" id="color-picker">
+        <h2>Change Timer Color</h2>
+        <label for="color-picker">Pick a color:</label>
+        <input type="color" id="color-picker" class="color-picker" onchange="changeTimerColor()">
+      </div>
+
+      <div class="feature hidden" id="weather">
+        <h2>Weather</h2>
+        <div class="weather" id="weather">Fetching current weather...</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="trial.js"></script>
+</body>
+</html>
